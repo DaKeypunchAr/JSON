@@ -140,6 +140,8 @@ namespace JSON
 		operator std::string();
 		operator const char*();
 
+		unsigned int size() const;
+
 		void print() const;
 		std::string getPrintableVersion(unsigned int depth, bool tabbed = false, bool addComma = true) const;
 		mutable bool m_HasPrintableVersion = false;

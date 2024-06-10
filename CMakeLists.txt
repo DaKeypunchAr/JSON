@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.28...3.29)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
-project(json VERSION 1.0.0 LANGUAGES CXX)
+project(json VERSION 1.0.1 LANGUAGES CXX)
 
 add_library(json "src/JSON.cpp")
 target_include_directories(json PUBLIC "include" "${CMAKE_CURRENT_BINARY_DIR}")

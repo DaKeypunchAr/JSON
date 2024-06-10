@@ -496,4 +496,10 @@ namespace JSON
 		if (type != JSONDataType::STRING) throw std::bad_cast();
 		return str.c_str();
 	}
+
+	unsigned int JSONValue::size() const
+	{
+		if (type != JSONDataType::LIST) throw std::runtime_error("The value is not an list!\n");
+		return list.size();
+	}
 }
