@@ -1,0 +1,6 @@
+#ifndef _ROOT
+#define _ROOT
+
+#define ROOT_DIR "@PROJECT_ROOT_DIR@"
+
+#endif
