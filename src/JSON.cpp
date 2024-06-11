@@ -403,15 +403,13 @@ namespace JSON
 		}
 		throw std::logic_error("Key not matched!");
 	}
-	const JSONKeyValuePair& JSONBlock::operator[](unsigned int i) const
+	const std::string& JSONBlock::getKey(unsigned int index) const
 	{
-		if (i < 0 || i >= m_Pairs.size()) throw std::out_of_range("Index is out of range. Index: " + std::to_string(i));
-		return m_Pairs[i];
+		return m_Pairs[index].key;
 	}
-	JSONKeyValuePair& JSONBlock::operator[](unsigned int i)
+	std::string& JSONBlock::getKey(unsigned int index)
 	{
-		if (i < 0 || i >= m_Pairs.size()) throw std::out_of_range("Index is out of range! Index: " + std::to_string(i));
-		return m_Pairs[i];
+		return m_Pairs[index].key;
 	}
 
 	const JSONValue& JSON::operator[](const char* key) const
@@ -421,14 +419,6 @@ namespace JSON
 	JSONValue& JSON::operator[](const char* key)
 	{
 		return m_StartBlock[key];
-	}
-	const JSONKeyValuePair& JSON::operator[](unsigned int i) const
-	{
-		return m_StartBlock[i];
-	}
-	JSONKeyValuePair& JSON::operator[](unsigned int i)
-	{
-		return m_StartBlock[i];
 	}
 
 	const JSONValue& JSONValue::operator[](const char* key) const
@@ -460,16 +450,6 @@ namespace JSON
 			return list[i];
 		}
 		throw std::logic_error("JSONValue is not an list!");
-	}
-	const JSONKeyValuePair& JSONValue::operator[](unsigned int i) const
-	{
-		if (type != JSONDataType::JSON_BLOCK) throw std::logic_error("Type is not JSON Block!\n");
-		return child[i];
-	}
-	JSONKeyValuePair& JSONValue::operator[](unsigned int i)
-	{
-		if (type != JSONDataType::JSON_BLOCK) throw std::logic_error("Type is not JSON Block!\n");
-		return child[i];
 	}
 
 	/* Cast Operators */

@@ -107,8 +107,11 @@ namespace JSON
 
 		const JSONValue& operator[](const char* key) const;
 		JSONValue& operator[](const char* key);
-		const JSONKeyValuePair& operator[](unsigned int i) const;
-		JSONKeyValuePair& operator[](unsigned int i);
+
+		const std::string& getKey(unsigned int index) const;
+		std::string& getKey(unsigned int index);
+
+		unsigned int totalKeys() const { return m_Pairs.size(); }
 
 		bool exists(const std::string& key) const;
 
@@ -132,8 +135,11 @@ namespace JSON
 		JSONValue& operator[](const char* key);
 		const JSONValue& operator[](int) const;
 		JSONValue& operator[](int);
-		const JSONKeyValuePair& operator[](unsigned int) const;
-		JSONKeyValuePair& operator[](unsigned int);
+
+		const std::string& getKey(unsigned int index) const { return child.getKey(index); }
+		std::string& getKey(unsigned int index) { return child.getKey(index); }
+
+		unsigned int totalKeys() const { return child.totalKeys(); }
 
 		operator double() const;
 		operator long long() const;
@@ -181,8 +187,11 @@ namespace JSON
 
 		const JSONValue& operator[](const char* key) const;
 		JSONValue& operator[](const char* key);
-		const JSONKeyValuePair& operator[](unsigned int i) const;
-		JSONKeyValuePair& operator[](unsigned int i);
+
+		const std::string& getKey(unsigned int index) const { return m_StartBlock.getKey(index); }
+		std::string& getKey(unsigned int index) { return m_StartBlock.getKey(index); }
+
+		unsigned int totalKeys() const { return m_StartBlock.totalKeys(); }
 
 		JSONBlock getRootBlock() const { return m_StartBlock; }
 
