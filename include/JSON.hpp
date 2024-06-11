@@ -107,6 +107,8 @@ namespace JSON
 
 		const JSONValue& operator[](const char* key) const;
 		JSONValue& operator[](const char* key);
+		const JSONKeyValuePair& operator[](unsigned int i) const;
+		JSONKeyValuePair& operator[](unsigned int i);
 
 		bool exists(const std::string& key) const;
 
@@ -130,6 +132,8 @@ namespace JSON
 		JSONValue& operator[](const char* key);
 		const JSONValue& operator[](int) const;
 		JSONValue& operator[](int);
+		const JSONKeyValuePair& operator[](unsigned int) const;
+		JSONKeyValuePair& operator[](unsigned int);
 
 		operator double() const;
 		operator long long() const;
@@ -177,6 +181,8 @@ namespace JSON
 
 		const JSONValue& operator[](const char* key) const;
 		JSONValue& operator[](const char* key);
+		const JSONKeyValuePair& operator[](unsigned int i) const;
+		JSONKeyValuePair& operator[](unsigned int i);
 
 		JSONBlock getRootBlock() const { return m_StartBlock; }
 
