@@ -496,12 +496,12 @@ namespace JSON
 		if (type != JSONDataType::STRING) throw std::bad_cast();
 		return str.c_str();
 	}
-	JSONValue::operator const std::vector<JSONValue>&() const
+	JSONValue::operator const std::vector<JSONValue>&()const
 	{
 		if (type != JSONDataType::LIST) throw std::bad_cast();
 		return list;
 	}
-	JSONValue::operator std::vector<JSONValue>& ()
+	JSONValue::operator std::vector<JSONValue>&()
 	{
 		if (type != JSONDataType::LIST) throw std::bad_cast();
 		return list;
@@ -511,5 +511,22 @@ namespace JSON
 	{
 		if (type != JSONDataType::LIST) throw std::runtime_error("The value is not an list!\n");
 		return list.size();
+	}
+
+	bool JSONValue::exists(const std::string& key) const
+	{
+		return child.exists(key);
+	}
+	bool JSON::exists(const std::string& key) const
+	{
+		return m_StartBlock.exists(key);
+	}
+	bool JSONBlock::exists(const std::string& key) const
+	{
+		for (const JSONKeyValuePair& p : m_Pairs)
+		{
+			if (p.key == key) return true;
+		}
+		return false;
 	}
 }

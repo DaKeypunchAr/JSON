@@ -108,6 +108,8 @@ namespace JSON
 		const JSONValue& operator[](const char* key) const;
 		JSONValue& operator[](const char* key);
 
+		bool exists(const std::string& key) const;
+
 	private:
 		std::vector<JSONKeyValuePair> m_Pairs;
 		mutable bool m_HasPrintableVersion = false;
@@ -142,6 +144,8 @@ namespace JSON
 		operator const std::vector<JSONValue>&() const;
 		operator std::vector<JSONValue>&();
 
+		bool exists(const std::string& key) const;
+
 		unsigned int size() const;
 
 		void print() const;
@@ -175,6 +179,8 @@ namespace JSON
 		JSONValue& operator[](const char* key);
 
 		JSONBlock getRootBlock() const { return m_StartBlock; }
+
+		bool exists(const std::string& key) const;
 
 	private:
 		JSONBlock evaluateBlock(const std::string& jsonBlock);
