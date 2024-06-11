@@ -129,16 +129,18 @@ namespace JSON
 		const JSONValue& operator[](int) const;
 		JSONValue& operator[](int);
 
-		operator double();
-		operator long long();
-		operator int();
-		operator unsigned int();
-		operator short();
-		operator unsigned short();
-		operator char();
-		operator unsigned char();
-		operator std::string();
-		operator const char*();
+		operator double() const;
+		operator long long() const;
+		operator int() const;
+		operator unsigned int() const;
+		operator short() const;
+		operator unsigned short() const;
+		operator char() const;
+		operator unsigned char() const;
+		operator std::string() const;
+		operator const char*() const;
+		operator const std::vector<JSONValue>&() const;
+		operator std::vector<JSONValue>&();
 
 		unsigned int size() const;
 

@@ -444,57 +444,67 @@ namespace JSON
 		throw std::logic_error("JSONValue is not an list!");
 	}
 
-	JSONValue::operator double()
+	JSONValue::operator double() const
 	{
 		if (type != JSONDataType::NUMBER) throw std::bad_cast();
 		if (num.holdsDouble()) return num.getDouble();
 		return (double)num.getLongLong();
 	}
-	JSONValue::operator long long()
+	JSONValue::operator long long() const
 	{
 		if (type != JSONDataType::NUMBER) throw std::bad_cast();
 		if (num.holdsLongLong()) return num.getLongLong();
 		return (long long)num.getDouble();
 	}
-	JSONValue::operator int()
+	JSONValue::operator int() const
 	{
 		int i = (long long)*this;
 		return i;
 	}
-	JSONValue::operator unsigned int()
+	JSONValue::operator unsigned int() const
 	{
 		unsigned int i = (long long)*this;
 		return i;
 	}
-	JSONValue::operator short()
+	JSONValue::operator short() const
 	{
 		short s = (long long)*this;
 		return s;
 	}
-	JSONValue::operator unsigned short()
+	JSONValue::operator unsigned short() const
 	{
 		unsigned short s = (long long)*this;
 		return s;
 	}
-	JSONValue::operator char()
+	JSONValue::operator char() const
 	{
 		char c = (long long)*this;
 		return c;
 	}
-	JSONValue::operator unsigned char()
+	JSONValue::operator unsigned char() const
 	{
 		unsigned char c = (long long)*this;
 		return c;
 	}
-	JSONValue::operator std::string()
+	JSONValue::operator std::string() const
 	{
 		if (type == JSONDataType::STRING) return str;
 		throw std::bad_cast();
 	}
-	JSONValue::operator const char*()
+	JSONValue::operator const char*() const
 	{
 		if (type != JSONDataType::STRING) throw std::bad_cast();
 		return str.c_str();
+	}
+	JSONValue::operator const std::vector<JSONValue>&() const
+	{
+		if (type != JSONDataType::LIST) throw std::bad_cast();
+		return list;
+	}
+	JSONValue::operator std::vector<JSONValue>& ()
+	{
+		if (type != JSONDataType::LIST) throw std::bad_cast();
+		return list;
 	}
 
 	unsigned int JSONValue::size() const
